@@ -1,19 +1,21 @@
 const axios = require('axios');
 const xml2js = require('xml2js');
+const { v4: uuidv4 } = require('uuid');
 
 const soapRequest = `<?xml version="1.0" encoding="utf-8"?>
 <soapenv:Envelope 
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:abs="http://iec.ch/TC57/2011/abstract"
     xmlns:mes="http://iec.ch/TC57/2011/schema/message">
    <soapenv:Header/>
    <soapenv:Body>
-      <mes:PublishEvent>
-         <mes:EventMessageType>
+      <abs:PublishEvent>
+         <mes:message>
             <mes:Header>
                <mes:Verb>create</mes:Verb>
                <mes:Noun>EndDeviceEvent</mes:Noun>
                <mes:Timestamp>${new Date().toISOString()}</mes:Timestamp>
-               <mes:MessageID>${generateUUID()}</mes:MessageID>  <!-- Лучше динамический ID -->
+               <mes:MessageID>${uuidv4()}</mes:MessageID>
                <mes:Source>YourSystem</mes:Source>
             </mes:Header>
             <mes:Payload>
@@ -34,12 +36,12 @@ const soapRequest = `<?xml version="1.0" encoding="utf-8"?>
                   </Reading>
                 </Values>
               </EndDeviceEvent>
+              <mes:Format>XML</mes:Format>
             </mes:Payload>
-         </mes:EventMessageType>
-      </mes:PublishEvent>
+         </mes:message>
+      </abs:PublishEvent>
    </soapenv:Body>
 </soapenv:Envelope>`;
-
 
 const sendSoapRequest = async () => {
     try {

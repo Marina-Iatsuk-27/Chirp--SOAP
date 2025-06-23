@@ -12,42 +12,46 @@ app.post('/webhook', async (req, res) => {
     const timestamp = new Date().toISOString();
     const reading = req.body?.object?.temperature || 0;
 
-    // Собери SOAP-запрос как строку
+    // собираем SOAP-запрос как строку
     const soapBody = `<?xml version="1.0" encoding="utf-8"?>
-    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-        <soapenv:Body>
-            <PublishEvent xmlns="http://iec.ch/TC57/2011/schema/message">
-                <EventMessageType>
-                    <Header>
-                        <Verb>create</Verb>
-                        <Noun>EndDeviceEvent</Noun>
-                        <Timestamp>${timestamp}</Timestamp>
-                        <MessageID>${Math.random().toString(36).substr(2, 9)}</MessageID>
-                        <Source>ChirpStack</Source>
-                    </Header>
-                    <Payload>
-                        <EndDeviceEvent xmlns="http://iec.ch/TC57/2011/schema/message">
-                            <mRID>${devEui}</mRID>
-                            <createdDateTime>${timestamp}</createdDateTime>
-                            <EndDeviceEventType>
-                                <mRID>temperature_reading</mRID>
-                                <description>Temperature</description>
-                            </EndDeviceEventType>
-                            <Values>
-                                <Reading>
-                                    <value>${reading}</value>
-                                    <ReadingType>
-                                        <name>Temperature</name>
-                                        <unit>Celsius</unit>
-                                    </ReadingType>
-                                </Reading>
-                            </Values>
-                        </EndDeviceEvent>
-                    </Payload>
-                </EventMessageType>
-            </PublishEvent>
-        </soapenv:Body>
-    </soapenv:Envelope>`;
+        <soapenv:Envelope 
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:abs="http://iec.ch/TC57/2011/abstract"
+            xmlns:mes="http://iec.ch/TC57/2011/schema/message">
+            <soapenv:Body>
+                <abs:PublishEvent>
+                    <mes:message>
+                        <mes:Header>
+                            <mes:Verb>create</mes:Verb>
+                            <mes:Noun>EndDeviceEvent</mes:Noun>
+                            <mes:Timestamp>${timestamp}</mes:Timestamp>
+                            <mes:MessageID>${Math.random().toString(36).substr(2, 9)}</mes:MessageID>
+                            <mes:Source>ChirpStack</mes:Source>
+                        </mes:Header>
+                        <mes:Payload>
+                            <mes:EndDeviceEvent>
+                                <mes:mRID>${devEui}</mes:mRID>
+                                <mes:createdDateTime>${timestamp}</mes:createdDateTime>
+                                <mes:EndDeviceEventType>
+                                    <mes:mRID>temperature_reading</mes:mRID>
+                                    <mes:description>Temperature</mes:description>
+                                </mes:EndDeviceEventType>
+                                <mes:Values>
+                                    <mes:Reading>
+                                        <mes:value>${reading}</mes:value>
+                                        <mes:ReadingType>
+                                            <mes:name>Temperature</mes:name>
+                                            <mes:unit>Celsius</mes:unit>
+                                        </mes:ReadingType>
+                                    </mes:Reading>
+                                </mes:Values>
+                            </mes:EndDeviceEvent>
+                        </mes:Payload>
+                    </mes:message>
+                </abs:PublishEvent>
+            </soapenv:Body>
+        </soapenv:Envelope>`;
+
 
     try {
         // Отправим SOAP на тестовый сервер

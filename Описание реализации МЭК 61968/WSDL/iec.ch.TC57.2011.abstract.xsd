@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://iec.ch/TC57/2011/abstract" elementFormDefault="qualified" targetNamespace="http://iec.ch/TC57/2011/abstract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="iec.ch.TC57.2011.schema.message.xsd" namespace="http://iec.ch/TC57/2011/schema/message" />
+  <xs:element name="PublishEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="message" type="q1:EventMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublishEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+      
+        <xs:element xmlns:q2="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="PublishEventResult" type="q2:ResponseMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="message" type="q3:RequestMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="RequestResult" type="q4:ResponseMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="message" type="q5:ResponseMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://iec.ch/TC57/2011/schema/message" minOccurs="0" maxOccurs="1" name="ResponseResult" type="q6:ResponseMessageType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:a="http://langdale.com.au/2005/Message#" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" targetNamespace="http://iec.ch/TC57/2011/GetMeterReadings#" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://langdale.com.au/2005/Message#" xmlns:m="http://iec.ch/TC57/2011/GetMeterReadings#">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:element name="GetMeterReadings" type="m:GetMeterReadings"/>
+<xs:complexType name="GetMeterReadings">
+<xs:sequence>
+<xs:element name="EndDevice" type="m:EndDevice" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="EndDeviceGroup" type="m:EndDeviceGroup" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="MeterReadings" type="m:MeterReadings" minOccurs="0" maxOccurs="1"/>
+<xs:element name="Reading" type="m:Reading" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ReadingQuality" type="m:ReadingQuality" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ReadingType" type="m:ReadingType" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="TimeSchedule" type="m:TimeSchedule" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="TransformerTank" type="m:TransformerTank" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="UsagePoint" type="m:UsagePoint" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="UsagePointGroup" type="m:UsagePointGroup" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CoincidentReading" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Reading">
+<xs:annotation>
+<xs:documentation>Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType.</xs:documentation>
+<xs:documentation/>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="reason" minOccurs="0" maxOccurs="1" type="m:ReadingReasonKind" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Reading.reason">
+<xs:annotation>
+<xs:documentation>Reason for this reading being taken.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="source" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseReading.source">
+<xs:annotation>
+<xs:documentation>System that originally supplied the reading (e.g., customer, AMI system, handheld reading system, another enterprise system, etc.).</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="ReadingType" minOccurs="1" maxOccurs="1" type="m:ReadingType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Reading.ReadingType">
+<xs:annotation>
+<xs:documentation>Type information for this reading value.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="timePeriod" minOccurs="0" maxOccurs="1" type="m:DateTimeInterval" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseReading.timePeriod">
+<xs:annotation>
+<xs:documentation>Start and end of the period for those readings whose type has a time attribute such as 'billing', seasonal' or 'forTheSpecifiedPeriod'.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DateTimeInterval" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#DateTimeInterval">
+<xs:annotation>
+<xs:documentation>Interval of date and time.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="end" minOccurs="0" maxOccurs="1" type="xs:dateTime" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#DateTimeInterval.end">
+<xs:annotation>
+<xs:documentation>End date and time of this interval.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="start" minOccurs="0" maxOccurs="1" type="xs:dateTime" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#DateTimeInterval.start">
+<xs:annotation>
+<xs:documentation>Start date and time of this interval.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EndDevice" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#EndDevice">
+<xs:annotation>
+<xs:documentation>Asset container that performs one or more end device functions. One type of end device is a meter which can perform metering, load management, connect/disconnect, accounting functions, etc. Some end devices, such as ones monitoring and controlling air conditioner, refrigerator, pool pumps may be connected to a meter. All end devices may have communication capability defined by the associated communication function(s). An end device may be owned by a consumer, a service provider, utility or otherwise.</xs:documentation>
+<xs:documentation>There may be a related end device function that identifies a sensor or control point within a metering application or communications systems (e.g., water, gas, electricity).</xs:documentation>
+<xs:documentation>Some devices may use an optical port that conforms to the ANSI C12.18 standard for communications.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EndDeviceEvent" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#EndDeviceEvent">
+<xs:annotation>
+<xs:documentation>Event detected by a device function associated with end device.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="EndDeviceEventType" minOccurs="1" maxOccurs="1" type="m:EndDeviceEventType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#EndDeviceEvent.EndDeviceEventType">
+<xs:annotation>
+<xs:documentation>Type of this end device event.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EndDeviceEventType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#EndDeviceEventType">
+<xs:annotation>
+<xs:documentation>Detailed description for an event produced by an end device. Values in attributes allow for creation of recommended codes to be used for identifying end device events as follows: &amp;lt;type&amp;gt;.&amp;lt;domain&amp;gt;.&amp;lt;subDomain&amp;gt;.&amp;lt;eventOrAction&amp;gt;.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EndDeviceGroup" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#EndDeviceGroup">
+<xs:annotation>
+<xs:documentation>Abstraction for management of group communications within a two-way AMR system or the data for a group of related end devices. Commands can be issued to all of the end devices that belong to the group using a defined group address and the underlying AMR communication infrastructure.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Meter" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Meter">
+<xs:annotation>
+<xs:documentation>Physical asset that performs the metering role of the usage point. Used for measuring consumption and detection of events.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="MeterReadings" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading">
+<xs:annotation>
+<xs:documentation>Set of values obtained from the meter.</xs:documentation>
+<xs:documentation/>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="isCoincidentTrigger" minOccurs="0" maxOccurs="1" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading.isCoincidentTrigger">
+<xs:annotation>
+<xs:documentation>If true, this meter reading is the meter reading for which other coincident meter readings are requested or provided.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="EndDeviceEvents" minOccurs="0" maxOccurs="1" type="m:EndDeviceEvent" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading.EndDeviceEvents">
+<xs:annotation>
+<xs:documentation>All end device events associated with this set of measured values.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Meter" minOccurs="0" maxOccurs="1" type="m:Meter" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading.Meter">
+<xs:annotation>
+<xs:documentation>Meter providing this reading.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Readings" minOccurs="0" maxOccurs="1" type="m:CoincidentReading" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading.Readings">
+<xs:annotation>
+<xs:documentation>All reading values contained within this meter reading.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="UsagePoint" minOccurs="0" maxOccurs="1" type="m:UsagePoint" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#MeterReading.UsagePoint">
+<xs:annotation>
+<xs:documentation>Usage point from which this meter reading (set of values) has been obtained.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Name">
+<xs:annotation>
+<xs:documentation>The Name class provides the means to define any number of human readable  names for an object. A name is &lt;b&gt;not&lt;/b&gt; to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.name">
+<xs:annotation>
+<xs:documentation>Any free text that name the object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="NameType" minOccurs="0" maxOccurs="1" type="m:NameType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.NameType">
+<xs:annotation>
+<xs:documentation>Type of this name.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NameType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType">
+<xs:annotation>
+<xs:documentation>Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName and aliasName as defined in CIM version 14. Their definitions from CIM14 are</xs:documentation>
+<xs:documentation>The localName is a human readable name of the object. It is only used with objects organized in a naming hierarchy. localName: A free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.</xs:documentation>
+<xs:documentation>aliasName: A free text alternate name typically used in tabular reports where the column width is limited.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType.description">
+<xs:annotation>
+<xs:documentation>Description of the name type.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType.name">
+<xs:annotation>
+<xs:documentation>Name of the name type.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="NameTypeAuthority" minOccurs="0" maxOccurs="1" type="m:NameTypeAuthority" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType.NameTypeAuthority">
+<xs:annotation>
+<xs:documentation>Authority responsible for managing names of this type.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NameTypeAuthority" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameTypeAuthority">
+<xs:annotation>
+<xs:documentation>Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameTypeAuthority.description">
+<xs:annotation>
+<xs:documentation>Description of the name type authority.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#NameTypeAuthority.name">
+<xs:annotation>
+<xs:documentation>Name of the name type authority.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Reading" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Reading">
+<xs:annotation>
+<xs:documentation>Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="reason" minOccurs="0" maxOccurs="1" type="m:ReadingReasonKind" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#Reading.reason">
+<xs:annotation>
+<xs:documentation>Reason for this reading being taken.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="source" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseReading.source">
+<xs:annotation>
+<xs:documentation>System that originally supplied the reading (e.g., customer, AMI system, handheld reading system, another enterprise system, etc.).</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="timePeriod" minOccurs="0" maxOccurs="1" type="m:DateTimeInterval" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseReading.timePeriod">
+<xs:annotation>
+<xs:documentation>Start and end of the period for those readings whose type has a time attribute such as 'billing', seasonal' or 'forTheSpecifiedPeriod'.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ReadingQuality" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#ReadingQuality">
+<xs:annotation>
+<xs:documentation>Quality of a specific reading value or interval reading value. Note that more than one quality may be applicable to a given reading. Typically not used unless problems or unusual conditions occur (i.e., quality for each reading is assumed to be good unless stated otherwise in associated reading quality type). It can also be used with the corresponding reading quality type to indicate that the validation has been performed and succeeded.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="ReadingQualityType" minOccurs="1" maxOccurs="1" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#ReadingQuality.ReadingQualityType">
+<xs:annotation>
+<xs:documentation>Type of this reading quality.</xs:documentation>
+</xs:annotation>
+<xs:complexType sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#ReadingQualityType">
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="ReadingReasonKind" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#ReadingReasonKind">
+<xs:annotation>
+<xs:documentation>Reason for the reading being taken.</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="billing">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in response to a billing-related inquiry by a customer or other party. A variant of 'inquiry'.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="demandReset">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with the resetting of one or more demand registers in a meter.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="inquiry">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in response to an inquiry by a customer or other party.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="installation">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with installation of a meter.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="loadManagement">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken to support management of loads on distribution networks or devices.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="loadResearch">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken to support research and analysis of loads on distribution networks or devices.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="moveIn">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with a customer move-in event.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="moveOut">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with a customer move-out event.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="other">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken for some other reason or purpose.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="removal">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with removal of a meter.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="serviceConnect">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with a connection or re-connection of service.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="serviceDisconnect">
+<xs:annotation>
+<xs:documentation>Reading(s) taken or to be taken in conjunction with a disconnection of service.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="ReadingType" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#ReadingType">
+<xs:annotation>
+<xs:documentation>Detailed description for a type of a reading value. Values in attributes allow for creation of recommended codes to be used for identifying reading value types as follows: &amp;lt;macroPeriod&amp;gt;.&amp;lt;aggregate&amp;gt;.&amp;lt;measuringPeriod&amp;gt;.&amp;lt;accumulation&amp;gt;.&amp;lt;flowDirection&amp;gt;.&amp;lt;commodity&amp;gt;.&amp;lt;measurementKind&amp;gt;.&amp;lt;interharmonic.numerator&amp;gt;.&amp;lt;interharmonic.denominator&amp;gt;.&amp;lt;argument.numerator&amp;gt;.&amp;lt;argument.denominator&amp;gt;.&amp;lt;tou&amp;gt;.&amp;lt;cpp&amp;gt;.&amp;lt;consumptionTier&amp;gt;.&amp;lt;phases&amp;gt;.&amp;lt;multiplier&amp;gt;.&amp;lt;unit&amp;gt;.&amp;lt;currency&amp;gt;.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TimeSchedule" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#TimeSchedule">
+<xs:annotation>
+<xs:documentation>Description of anything that changes through time. Time schedule is used to perform a single-valued function of time. Use inherited 'type' attribute to give additional information on this schedule, such as: periodic (hourly, daily, weekly, monthly, etc.), day of the month, by date, calendar (specific times and dates).</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="scheduleInterval" minOccurs="1" maxOccurs="1" type="m:DateTimeInterval" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#TimeSchedule.scheduleInterval">
+<xs:annotation>
+<xs:documentation>Schedule date and time interval.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TransformerTank" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerTank">
+<xs:annotation>
+<xs:documentation>An assembly of two or more coupled windings that transform electrical power between voltage levels. These windings are bound on a common core and place in the same tank. Transformer tank can be used to model both single-phase and 3-phase transformers.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="UsagePoint" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#UsagePoint">
+<xs:annotation>
+<xs:documentation>Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="UsagePointGroup" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#UsagePointGroup">
+<xs:annotation>
+<xs:documentation>Abstraction for management of group communications within a two-way AMR system or the data for a group of related usage points. Commands can be issued to all of the usage points that belong to a usage point group using a defined group address and the underlying AMR communication infrastructure.</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="mRID" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.mRID">
+<xs:annotation>
+<xs:documentation>A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</xs:documentation>
+<xs:documentation>Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</xs:documentation>
+<xs:documentation>For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element name="Names" minOccurs="0" maxOccurs="unbounded" type="m:Name" sawsdl:modelReference="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+<xs:annotation>
+<xs:documentation>All names of this identified object.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

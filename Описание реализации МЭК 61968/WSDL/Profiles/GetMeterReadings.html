@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a="http://langdale.com.au/2005/Message#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<head>
+<title>Profile Documentation</title>
+<style type="text/css">
+/* typography: fonts */
+body { font-family: arial, sans-serif; }
+
+.name, .type, .cardinality, .superclass, .xsdtype, .namespace { font-family: courier, monospace; }
+
+
+/* typography: emphasis */
+h1 { color: white; background: gray;}
+
+h2, h3 { color: gray; text-decoration: none;}
+
+h2.abstract, h2.enumerated, h2.domain {font-style: italic } 
+
+p.note { background-color: #ddd }
+
+p.declaration { color: gray }
+
+:link { color: purple; }
+
+.xsdtype { color: black; font-weight: bold; }
+
+.namespace { color: black }
+
+.package { font-size: x-large; color: gray }
+
+
+/* borders */
+div.group {
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
+	
+}
+
+th, td {
+	border-top-style : solid;
+	border-top-width : 1px;
+	border-color: gray;
+ }
+
+
+/* spacing and alignment */
+body {padding: 5px; }
+
+h1 { padding: 5px;}
+
+div.group {
+	margin-top: 10px;
+	padding: 5px;
+	position: relative;
+}
+th, td {
+	text-align : left;
+	vertical-align : top;
+}
+th, td.type { width: 15em; overflow: visible; }
+
+p.cardinality { width: 4em; }
+
+p.package { position: absolute; right: 10px; top: 0px}				
+</style>
+</head>
+<body>
+<h1>Profile Documentation</h1>
+<p/>
+<p class="declaration">
+					Profile namespace:
+					<span class="namespace">http://iec.ch/TC57/2011/GetMeterReadings#</span>
+</p>
+<h1>Concrete Classes</h1>
+<div id="EndDevice" class="group">
+<a href="#EndDevice">
+<h2 class="concrete">EndDevice</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Asset container that performs one or more end device functions. One type of end device is a meter which can perform metering, load management, connect/disconnect, accounting functions, etc. Some end devices, such as ones monitoring and controlling air conditioner, refrigerator, pool pumps may be connected to a meter. All end devices may have communication capability defined by the associated communication function(s). An end device may be owned by a consumer, a service provider, utility or otherwise.</p>
+<p class="comment">There may be a related end device function that identifies a sensor or control point within a metering application or communications systems (e.g., water, gas, electricity).</p>
+<p class="comment">Some devices may use an optical port that conforms to the ANSI C12.18 standard for communications.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="EndDevice.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="EndDevice.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="EndDeviceGroup" class="group">
+<a href="#EndDeviceGroup">
+<h2 class="concrete">EndDeviceGroup</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Abstraction for management of group communications within a two-way AMR system or the data for a group of related end devices. Commands can be issued to all of the end devices that belong to the group using a defined group address and the underlying AMR communication infrastructure.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="EndDeviceGroup.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="EndDeviceGroup.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="MeterReadings" class="group">
+<a href="#MeterReadings">
+<h2 class="concrete">MeterReadings</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Set of values obtained from the meter.</p>
+<p class="note"/>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="MeterReadings.isCoincidentTrigger">isCoincidentTrigger</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">boolean</p>
+</td>
+<td>
+<p class="comment">If true, this meter reading is the meter reading for which other coincident meter readings are requested or provided.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="MeterReadings.EndDeviceEvents">EndDeviceEvents</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#EndDeviceEvent">EndDeviceEvent</a>
+</p>
+</td>
+<td>
+<p class="comment">All end device events associated with this set of measured values.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="MeterReadings.Meter">Meter</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Meter">Meter</a>
+</p>
+</td>
+<td>
+<p class="comment">Meter providing this reading.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="MeterReadings.Readings">Readings</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#CoincidentReading">CoincidentReading</a>
+</p>
+</td>
+<td>
+<p class="comment">All reading values contained within this meter reading.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="MeterReadings.UsagePoint">UsagePoint</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#UsagePoint">UsagePoint</a>
+</p>
+</td>
+<td>
+<p class="comment">Usage point from which this meter reading (set of values) has been obtained.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Reading" class="group">
+<a href="#Reading">
+<h2 class="concrete">Reading</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="Reading.reason">reason</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#ReadingReasonKind">ReadingReasonKind</a>
+</p>
+</td>
+<td>
+<p class="comment">Reason for this reading being taken.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="Reading.source">source</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">System that originally supplied the reading (e.g., customer, AMI system, handheld reading system, another enterprise system, etc.).</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="Reading.timePeriod">timePeriod</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#DateTimeInterval">DateTimeInterval</a>
+</p>
+</td>
+<td>
+<p class="comment">Start and end of the period for those readings whose type has a time attribute such as 'billing', seasonal' or 'forTheSpecifiedPeriod'.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="ReadingQuality" class="group">
+<a href="#ReadingQuality">
+<h2 class="concrete">ReadingQuality</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Quality of a specific reading value or interval reading value. Note that more than one quality may be applicable to a given reading. Typically not used unless problems or unusual conditions occur (i.e., quality for each reading is assumed to be good unless stated otherwise in associated reading quality type). It can also be used with the corresponding reading quality type to indicate that the validation has been performed and succeeded.</p>
+</div>
+<div id="ReadingType" class="group">
+<a href="#ReadingType">
+<h2 class="concrete">ReadingType</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Detailed description for a type of a reading value. Values in attributes allow for creation of recommended codes to be used for identifying reading value types as follows: &amp;lt;macroPeriod&amp;gt;.&amp;lt;aggregate&amp;gt;.&amp;lt;measuringPeriod&amp;gt;.&amp;lt;accumulation&amp;gt;.&amp;lt;flowDirection&amp;gt;.&amp;lt;commodity&amp;gt;.&amp;lt;measurementKind&amp;gt;.&amp;lt;interharmonic.numerator&amp;gt;.&amp;lt;interharmonic.denominator&amp;gt;.&amp;lt;argument.numerator&amp;gt;.&amp;lt;argument.denominator&amp;gt;.&amp;lt;tou&amp;gt;.&amp;lt;cpp&amp;gt;.&amp;lt;consumptionTier&amp;gt;.&amp;lt;phases&amp;gt;.&amp;lt;multiplier&amp;gt;.&amp;lt;unit&amp;gt;.&amp;lt;currency&amp;gt;.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="ReadingType.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="ReadingType.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="TimeSchedule" class="group">
+<a href="#TimeSchedule">
+<h2 class="concrete">TimeSchedule</h2>
+</a>
+<p class="package">Common</p>
+<p class="comment">Description of anything that changes through time. Time schedule is used to perform a single-valued function of time. Use inherited 'type' attribute to give additional information on this schedule, such as: periodic (hourly, daily, weekly, monthly, etc.), day of the month, by date, calendar (specific times and dates).</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="TimeSchedule.scheduleInterval">scheduleInterval</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#DateTimeInterval">DateTimeInterval</a>
+</p>
+</td>
+<td>
+<p class="comment">Schedule date and time interval.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="TransformerTank" class="group">
+<a href="#TransformerTank">
+<h2 class="concrete">TransformerTank</h2>
+</a>
+<p class="package">Wires</p>
+<p class="comment">An assembly of two or more coupled windings that transform electrical power between voltage levels. These windings are bound on a common core and place in the same tank. Transformer tank can be used to model both single-phase and 3-phase transformers.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="TransformerTank.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="TransformerTank.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="UsagePoint" class="group">
+<a href="#UsagePoint">
+<h2 class="concrete">UsagePoint</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="UsagePoint.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="UsagePoint.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="UsagePointGroup" class="group">
+<a href="#UsagePointGroup">
+<h2 class="concrete">UsagePointGroup</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Abstraction for management of group communications within a two-way AMR system or the data for a group of related usage points. Commands can be issued to all of the usage points that belong to a usage point group using a defined group address and the underlying AMR communication infrastructure.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="UsagePointGroup.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="UsagePointGroup.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<h1>Abstract Classes</h1>
+<div id="CoincidentReading" class="group">
+<a href="#CoincidentReading">
+<h2 class="abstract">CoincidentReading</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType.</p>
+<p class="note"/>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="CoincidentReading.reason">reason</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#ReadingReasonKind">ReadingReasonKind</a>
+</p>
+</td>
+<td>
+<p class="comment">Reason for this reading being taken.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="CoincidentReading.source">source</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">System that originally supplied the reading (e.g., customer, AMI system, handheld reading system, another enterprise system, etc.).</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="CoincidentReading.ReadingType">ReadingType</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#ReadingType">ReadingType</a>
+</p>
+</td>
+<td>
+<p class="comment">Type information for this reading value.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="CoincidentReading.timePeriod">timePeriod</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#DateTimeInterval">DateTimeInterval</a>
+</p>
+</td>
+<td>
+<p class="comment">Start and end of the period for those readings whose type has a time attribute such as 'billing', seasonal' or 'forTheSpecifiedPeriod'.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="EndDeviceEvent" class="group">
+<a href="#EndDeviceEvent">
+<h2 class="abstract">EndDeviceEvent</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Event detected by a device function associated with end device.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="EndDeviceEvent.EndDeviceEventType">EndDeviceEventType</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#EndDeviceEventType">EndDeviceEventType</a>
+</p>
+</td>
+<td>
+<p class="comment">Type of this end device event.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="EndDeviceEventType" class="group">
+<a href="#EndDeviceEventType">
+<h2 class="abstract">EndDeviceEventType</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Detailed description for an event produced by an end device. Values in attributes allow for creation of recommended codes to be used for identifying end device events as follows: &amp;lt;type&amp;gt;.&amp;lt;domain&amp;gt;.&amp;lt;subDomain&amp;gt;.&amp;lt;eventOrAction&amp;gt;.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="EndDeviceEventType.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="EndDeviceEventType.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Meter" class="group">
+<a href="#Meter">
+<h2 class="abstract">Meter</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Physical asset that performs the metering role of the usage point. Used for measuring consumption and detection of events.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="Meter.mRID">mRID</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">A Model Authority issues mRIDs. Given that each Model Authority has a unique id and this id is part of the mRID, then the mRID is globally unique.</p>
+<p class="comment">Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.</p>
+<p class="comment">For CIMXML data files the mRID is mapped to rdf:ID or rdf:about attributes that identifies CIM object elements.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="Meter.Names">Names</p>
+</th>
+<td>
+<p class="cardinality">0..unbounded</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#Name">Name</a>
+</p>
+</td>
+<td>
+<p class="comment">All names of this identified object.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Name" class="group">
+<a href="#Name">
+<h2 class="abstract">Name</h2>
+</a>
+<p class="package">Core</p>
+<p class="comment">The Name class provides the means to define any number of human readable  names for an object. A name is &lt;b&gt;not&lt;/b&gt; to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="Name.name">name</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">Any free text that name the object.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="Name.NameType">NameType</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#NameType">NameType</a>
+</p>
+</td>
+<td>
+<p class="comment">Type of this name.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="NameType" class="group">
+<a href="#NameType">
+<h2 class="abstract">NameType</h2>
+</a>
+<p class="package">Core</p>
+<p class="comment">Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName and aliasName as defined in CIM version 14. Their definitions from CIM14 are</p>
+<p class="comment">The localName is a human readable name of the object. It is only used with objects organized in a naming hierarchy. localName: A free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.</p>
+<p class="comment">aliasName: A free text alternate name typically used in tabular reports where the column width is limited.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="NameType.description">description</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">Description of the name type.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="NameType.name">name</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">Name of the name type.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="NameType.NameTypeAuthority">NameTypeAuthority</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">
+<a href="#NameTypeAuthority">NameTypeAuthority</a>
+</p>
+</td>
+<td>
+<p class="comment">Authority responsible for managing names of this type.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="NameTypeAuthority" class="group">
+<a href="#NameTypeAuthority">
+<h2 class="abstract">NameTypeAuthority</h2>
+</a>
+<p class="package">Core</p>
+<p class="comment">Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.</p>
+<h3>Native Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="NameTypeAuthority.description">description</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">Description of the name type authority.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="NameTypeAuthority.name">name</p>
+</th>
+<td>
+<p class="cardinality">1..1</p>
+</td>
+<td class="type">
+<p class="type">string</p>
+</td>
+<td>
+<p class="comment">Name of the name type authority.</p>
+</td>
+</tr>
+</table>
+</div>
+<h1>Enumerations</h1>
+<div id="ReadingReasonKind" class="group">
+<a href="#ReadingReasonKind">
+<h2 class="enumerated">ReadingReasonKind</h2>
+</a>
+<p class="package">Metering</p>
+<p class="comment">Reason for the reading being taken.</p>
+<table>
+<tr>
+<th>
+<p class="name">billing</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in response to a billing-related inquiry by a customer or other party. A variant of 'inquiry'.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">demandReset</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with the resetting of one or more demand registers in a meter.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">inquiry</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in response to an inquiry by a customer or other party.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">installation</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with installation of a meter.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">loadManagement</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken to support management of loads on distribution networks or devices.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">loadResearch</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken to support research and analysis of loads on distribution networks or devices.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">moveIn</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with a customer move-in event.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">moveOut</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with a customer move-out event.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">other</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken for some other reason or purpose.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">removal</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with removal of a meter.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">serviceConnect</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with a connection or re-connection of service.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name">serviceDisconnect</p>
+</th>
+<td>
+<p class="comment">Reading(s) taken or to be taken in conjunction with a disconnection of service.</p>
+</td>
+</tr>
+</table>
+</div>
+<h1>Compound Types</h1>
+<div id="DateTimeInterval" class="group">
+<a href="#DateTimeInterval">
+<h2 class="abstract">DateTimeInterval</h2>
+</a>
+<p class="package">Domain</p>
+<p class="comment">Interval of date and time.</p>
+<h3>Members</h3>
+<table>
+<tr>
+<th>
+<p class="name" id="DateTimeInterval.end">end</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">dateTime</p>
+</td>
+<td>
+<p class="comment">End date and time of this interval.</p>
+</td>
+</tr>
+<tr>
+<th>
+<p class="name" id="DateTimeInterval.start">start</p>
+</th>
+<td>
+<p class="cardinality">0..1</p>
+</td>
+<td class="type">
+<p class="type">dateTime</p>
+</td>
+<td>
+<p class="comment">Start date and time of this interval.</p>
+</td>
+</tr>
+</table>
+</div>
+<h1>Datatypes</h1>
+</body>
+</html>

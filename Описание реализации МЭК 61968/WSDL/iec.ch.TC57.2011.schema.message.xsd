@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://iec.ch/TC57/2011/schema/message" elementFormDefault="qualified" targetNamespace="http://iec.ch/TC57/2011/schema/message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="EventMessageType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="tns:HeaderType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Payload" type="tns:PayloadType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Verb">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="cancel" />
+            <xs:enumeration value="canceled" />
+            <xs:enumeration value="change" />
+            <xs:enumeration value="changed" />
+            <xs:enumeration value="create" />
+            <xs:enumeration value="created" />
+            <xs:enumeration value="close" />
+            <xs:enumeration value="closed" />
+            <xs:enumeration value="delete" />
+            <xs:enumeration value="deleted" />
+            <xs:enumeration value="get" />
+            <xs:enumeration value="reply" />
+            <xs:enumeration value="execute" />
+            <xs:enumeration value="executed" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="Noun" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Revision" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReplayDetection" type="tns:ReplayDetectionType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Context" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Source" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AsyncReplyFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReplyAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AckRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="User" type="tns:UserType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CorrelationID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Comment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="tns:MessageProperty" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReplayDetectionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Nonce" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Created" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="UserID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Organization" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PayloadType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="Compressed" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ID">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="idType" type="xs:string" />
+                <xs:attribute name="idAuthority" type="xs:string" />
+                <xs:attribute name="kind" type="tns:IDKindType" />
+                <xs:attribute name="objectType" type="xs:string" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" name="OperationSet" type="tns:OperationSet" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+      <xs:element minOccurs="0" maxOccurs="1" name="Format" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="IDKindType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="name" />
+      <xs:enumeration value="uuid" />
+      <xs:enumeration value="transaction" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OperationSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="enforceMsgSequence" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="enforceTransactionalIntegrity" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operation" type="tns:OperationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="operationId" type="xs:integer" />
+      <xs:element minOccurs="0" maxOccurs="1" name="noun" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="verb" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" default="false" name="elementOperation" type="xs:boolean" />
+      <xs:any minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseMessageType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="tns:HeaderType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reply" type="tns:ReplyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Payload" type="tns:PayloadType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReplyType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Result">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="OK" />
+            <xs:enumeration value="PARTIAL" />
+            <xs:enumeration value="FAILED" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" type="tns:ErrorType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ID">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="idType" type="xs:string" />
+              <xs:attribute name="idAuthority" type="xs:string" />
+              <xs:attribute name="kind" type="tns:IDKindType" />
+              <xs:attribute name="objectType" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+      <xs:element minOccurs="0" maxOccurs="1" name="operationId" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ErrorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="level">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="INFORM" />
+            <xs:enumeration value="WARNING" />
+            <xs:enumeration value="FATAL" />
+            <xs:enumeration value="CATASTROPHIC" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="reason" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="details" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="xpath" type="xs:QName" />
+      <xs:element minOccurs="0" maxOccurs="1" name="stackTrace" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Location" type="tns:LocationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ID">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="idType" type="xs:string" />
+              <xs:attribute name="idAuthority" type="xs:string" />
+              <xs:attribute name="kind" type="tns:IDKindType" />
+              <xs:attribute name="objectType" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="relatedID">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="idType" type="xs:string" />
+              <xs:attribute name="idAuthority" type="xs:string" />
+              <xs:attribute name="kind" type="tns:IDKindType" />
+              <xs:attribute name="objectType" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="object" type="tns:ObjectType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="operationId" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="node" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="pipeline" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="stage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObjectType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="mRID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Name" type="tns:Name" />
+      <xs:element minOccurs="0" maxOccurs="1" name="objectType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Name">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NameType" type="tns:NameType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NameType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NameTypeAuthority" type="tns:NameTypeAuthority" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NameTypeAuthority">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestMessageType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="tns:HeaderType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Request" type="tns:RequestType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Payload" type="tns:PayloadType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Option" type="tns:OptionType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ID">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="idType" type="xs:string" />
+              <xs:attribute name="idAuthority" type="xs:string" />
+              <xs:attribute name="kind" type="tns:IDKindType" />
+              <xs:attribute name="objectType" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OptionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
