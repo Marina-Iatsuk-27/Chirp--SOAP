@@ -9,6 +9,7 @@
 1. **Локальный сервер на Node.js** слушает события от ChirpStack.
 2. **ngrok** пробрасывает локальный порт в интернет.
 3. ChirpStack отправляет события (uplink, join, ack и т.д.) на указанный HTTP endpoint.
+4. Получаем сообщение на тестовом локальном soap сервере
 
 ---
 
@@ -118,6 +119,9 @@ node httpChirp.js
 
 # Проброс через ngrok
 ngrok http 3000
+
+# Принять сообщение на soap сервере
+node testSoapServer 
 ```
 
 
