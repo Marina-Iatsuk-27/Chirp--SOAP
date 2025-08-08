@@ -6,7 +6,9 @@ app.use(bodyParser.json());
 
 app.post('/webhook', (req, res) => {
     const event = req.body;
-    console.log('Received event:', event);
+    console.log('===== Webhook received =====');
+    console.log(JSON.stringify(req.body, null, 2));
+   // console.log('Received event:', event);
 
     // Обработка различных типов событий
     switch (event.eventType) {

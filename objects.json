@@ -1,0 +1,397 @@
+// node server.js
+// Server is running on port 3000
+// ===== Webhook received =====
+[{
+  "deduplicationId": "45600939-7484-4d29-819c-b5a0802f566e",
+  "time": "2025-08-06T11:34:11.601073259+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "1742a593-5961-4fce-957c-1e49a81970d4",
+    "deviceProfileName": " ground sensor Vega SI-13v2 ",
+    "deviceName": "Ground Sensor SI13-485-#2 (...5277)",
+    "devEui": "70b3d50ad0005277",
+    "deviceClassEnabled": "CLASS_A",
+    "tags": {}
+  },
+  "devAddr": "01515b67",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 93,
+  "fPort": 2,
+  "confirmed": true,
+  "data": "DQAZABkAAQEDFAD5AOwAiQA0AAAAFwAPAEsARAYHN4E=",
+  "object": {
+    "potassium": 15,
+    "humidity": 24.9,
+    "salt_saturation": 68,
+    "tds": 75,
+    "ph": 5.2,
+    "conductivity": 137,
+    "phosphorus": 23,
+    "temperature": 23.6,
+    "nitrogen": 0
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 49125,
+      "nsTime": "2025-08-06T11:34:11.278895186+00:00",
+      "rssi": -102,
+      "snr": -7.5,
+      "channel": 3,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "kx31AQ==",
+      "metadata": {
+        "region_common_name": "RU864",
+        "region_config_id": "ru864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 864700000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+},
+// ===== Webhook received =====
+{
+  "deduplicationId": "1f953f61-6cc8-41be-b75c-3c79a8f057b7",
+  "time": "2025-08-06T11:34:12.648093676+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "1742a593-5961-4fce-957c-1e49a81970d4",
+    "deviceProfileName": " ground sensor Vega SI-13v2 ",
+    "deviceName": "Ground Sensor SI13-485-#2 (...5277)",
+    "devEui": "70b3d50ad0005277",
+    "deviceClassEnabled": "CLASS_A",
+    "tags": {}
+  },
+  "devAddr": "01515b67",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 94,
+  "fPort": 2,
+  "confirmed": true,
+  "data": "ADAqAAAbAAAAAAAAAADD",
+  "object": {
+    "message": "служебный пакет"
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 14015,
+      "nsTime": "2025-08-06T11:34:12.430454155+00:00",
+      "rssi": -102,
+      "snr": -7.5,
+      "channel": 3,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "ky+2NQ==",
+      "metadata": {
+        "region_common_name": "RU864",
+        "region_config_id": "ru864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 864700000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+},
+// ===== Webhook received =====
+{
+  "deduplicationId": "d59493aa-208e-4cda-adaa-1d9a9d392616",
+  "time": "2025-08-06T11:34:13.828145330+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "1742a593-5961-4fce-957c-1e49a81970d4",
+    "deviceProfileName": " ground sensor Vega SI-13v2 ",
+    "deviceName": "Ground Sensor SI13-485-#2 (...5277)",
+    "devEui": "70b3d50ad0005277",
+    "deviceClassEnabled": "CLASS_A",
+    "tags": {}
+  },
+  "devAddr": "01515b67",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 95,
+  "fPort": 2,
+  "confirmed": true,
+  "data": "DQAZABkAAQEDFAD5AOwAiQA2AAAAFwAPAEsARAYHMMM=",
+  "object": {
+    "phosphorus": 23,
+    "ph": 5.4,
+    "salt_saturation": 68,
+    "humidity": 24.9,
+    "temperature": 23.6,
+    "conductivity": 137,
+    "nitrogen": 0,
+    "potassium": 15,
+    "tds": 75
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 42036,
+      "nsTime": "2025-08-06T11:34:13.616863737+00:00",
+      "rssi": -103,
+      "snr": -4.8,
+      "channel": 5,
+      "rfChain": 1,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "k0HcWw==",
+      "metadata": {
+        "region_config_id": "ru864",
+        "region_common_name": "RU864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 868900000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+},
+//===== Webhook received =====
+{
+  "deduplicationId": "f6beea9d-b403-4df8-b5da-fb4370d7399c",
+  "time": "2025-08-06T11:34:23.797517878+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "34ef6626-40d0-4211-8558-b3ad61c9e7c4",
+    "deviceProfileName": "Vega SI-13v2 (meteostation)",
+    "deviceName": "Meteostation",
+    "devEui": "3834373156398315",
+    "deviceClassEnabled": "CLASS_C",
+    "tags": {}
+  },
+  "devAddr": "008d8ce0",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 555,
+  "fPort": 2,
+  "confirmed": false,
+  "data": "DQBtACcAAzBSMCxEbj0wMDAjLERtPTAwMCMsRHg9MDAwIyxTbj0wLjAjLFNtPQ==",
+  "object": {
+    "windSpeedAvg": "undefined",
+    "windDirectionAvg": "000",
+    "rainfall": "undefined",
+    "batteryVoltage": "undefined",
+    "windSpeedMin": "0.0",
+    "temperature": "undefined",
+    "pressure": "undefined",
+    "windSpeedMax": "undefined",
+    "humidity": "undefined",
+    "windDirectionMax": "000",
+    "wetTemperature": "undefined"
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 41454,
+      "nsTime": "2025-08-06T11:34:23.576896560+00:00",
+      "rssi": -98,
+      "snr": 2,
+      "channel": 2,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "k9nACQ==",
+      "metadata": {
+        "region_common_name": "RU864",
+        "region_config_id": "ru864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 864500000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+},
+//===== Webhook received =====
+{
+  "deduplicationId": "be7c174c-43c7-49e6-bb6c-f5b638aeb4e8",
+  "time": "2025-08-06T11:34:26.151533366+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "34ef6626-40d0-4211-8558-b3ad61c9e7c4",
+    "deviceProfileName": "Vega SI-13v2 (meteostation)",
+    "deviceName": "Meteostation",
+    "devEui": "3834373156398315",
+    "deviceClassEnabled": "CLASS_C",
+    "tags": {}
+  },
+  "devAddr": "008d8ce0",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 556,
+  "fPort": 2,
+  "confirmed": false,
+  "data": "DQBtACcBAzk5LjkjLFN4PTAuMCMsVGE9MjMuOUMsVWE9MzQuMFAsUGE9MTAwOQ==",
+  "object": {
+    "wetTemperature": "undefined",
+    "windSpeedAvg": "undefined",
+    "humidity": "34.0",
+    "batteryVoltage": "undefined",
+    "windSpeedMin": "undefined",
+    "windDirectionAvg": "undefined",
+    "pressure": "1009",
+    "windDirectionMax": "undefined",
+    "windSpeedMax": "0.0",
+    "rainfall": "undefined",
+    "temperature": "23.9"
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 47260,
+      "nsTime": "2025-08-06T11:34:25.926729447+00:00",
+      "rssi": -101,
+      "snr": -2.8,
+      "channel": 2,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "k/2ofQ==",
+      "metadata": {
+        "region_common_name": "RU864",
+        "region_config_id": "ru864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 864500000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+},
+//===== Webhook received =====
+{
+  "deduplicationId": "eef31e10-ad86-43f4-b9af-d961044d3804",
+  "time": "2025-08-06T11:34:28.510262576+00:00",
+  "deviceInfo": {
+    "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName": "ChirpStack",
+    "applicationId": "2c705dbd-9239-42ec-8a17-b93f8eb44015",
+    "applicationName": "Agat",
+    "deviceProfileId": "34ef6626-40d0-4211-8558-b3ad61c9e7c4",
+    "deviceProfileName": "Vega SI-13v2 (meteostation)",
+    "deviceName": "Meteostation",
+    "devEui": "3834373156398315",
+    "deviceClassEnabled": "CLASS_C",
+    "tags": {}
+  },
+  "devAddr": "008d8ce0",
+  "adr": true,
+  "dr": 5,
+  "fCnt": 557,
+  "fPort": 2,
+  "confirmed": false,
+  "data": "DQBtAB8CAy42SCxSYz0wLjAwTSxUaD0yNC43QyxWaD0wLjBODQo=",
+  "object": {
+    "windSpeedAvg": "undefined",
+    "pressure": "undefined",
+    "temperature": "undefined",
+    "windDirectionMax": "undefined",
+    "windSpeedMin": "undefined",
+    "windSpeedMax": "undefined",
+    "humidity": "undefined",
+    "rainfall": "0.00",
+    "windDirectionAvg": "undefined",
+    "wetTemperature": "24.7",
+    "batteryVoltage": "0.0"
+  },
+  "rxInfo": [
+    {
+      "gatewayId": "785ee8fffe202024",
+      "uplinkId": 55495,
+      "nsTime": "2025-08-06T11:34:28.268781547+00:00",
+      "rssi": -101,
+      "snr": -4.8,
+      "channel": 2,
+      "location": {
+        "latitude": 44.60744,
+        "longitude": 33.51541,
+        "altitude": 33.515411376953125
+      },
+      "context": "lCFq1g==",
+      "metadata": {
+        "region_common_name": "RU864",
+        "region_config_id": "ru864"
+      },
+      "crcStatus": "CRC_OK"
+    }
+  ],
+  "txInfo": {
+    "frequency": 864500000,
+    "modulation": {
+      "lora": {
+        "bandwidth": 125000,
+        "spreadingFactor": 7,
+        "codeRate": "CR_4_5"
+      }
+    }
+  }
+}]
